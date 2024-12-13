@@ -1,0 +1,262 @@
+/* Reset y fuentes generales */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f1f1f1;
+}
+
+/* Estructura principal */
+.explorer {
+  display: flex;
+  width: 80%;
+  height: 80vh;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #2f3542;
+  color: #f1f1f1;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sidebar li:hover {
+  background-color: #57606f;
+}
+
+.sidebar .drive-item {
+  transition: background 0.2s;
+  cursor: pointer;
+  position: relative;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: #2f3542;
+  color: #f1f1f1;
+  margin-bottom: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  .drive-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: rgba(30, 144, 255, 0.3);
+    /* Color de progreso */
+    z-index: 0;
+    transition: width 0.3s ease;
+  }
+}
+
+.sidebar .drive-item:hover {
+  background-color: #57606f;
+}
+
+.sidebar i {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.view-options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.view-options button {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1e90ff;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.files-box {
+  overflow-y: auto;
+}
+
+.view-options button:hover {
+  background-color: #0077cc;
+}
+
+.files-box.view-list {
+  display: block;
+
+  /* Vista de Lista */
+  .file-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #e5e5e5;
+    overflow: hidden;
+
+    .file-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background-color: rgba(30, 144, 255, 0.3);
+      z-index: 0;
+      transition: width 0.3s ease;
+    }
+  }
+
+  .file-item i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+  }
+
+  .file-size,
+  .file-date {
+    flex: 1;
+    color: #888;
+  }
+}
+
+.file-name {
+  flex: 2;
+  color: #333;
+}
+
+.files-box.view-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+
+  /* Vista de Cuadrícula */
+  .file-item {
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+    transition: transform 0.2s;
+    overflow: hidden;
+
+    .file-progress {
+      display: none;
+    }
+  }
+
+  .file-item i {
+    font-size: 2rem;
+    color: #1e90ff;
+
+  }
+
+  .file-item:hover {
+    transform: scale(1.05);
+  }
+
+  .file-size,
+  .file-date {
+    display: none;
+  }
+}
+
+.file-item {
+  cursor: pointer;
+}
+
+.file-item:hover {
+  background-color: #d6d6d6;
+}
+
+.file-item.hide {
+  opacity: .7;
+}
+
+/* Sección de ruta y contador */
+.current-path {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.current-path .breadcrumb a {
+  color: #1e90ff;
+  text-decoration: none;
+  margin-right: 5px;
+}
+
+.current-path .breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.current-path .item-count {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* Barra de carga */
+.progress-bar {
+  position: relative;
+  width: 100%;
+  height: 5px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.progress-bar .progress {
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  background-color: #1e90ff;
+  transition: width 0.3s ease;
+  border-radius: 5px;
+}

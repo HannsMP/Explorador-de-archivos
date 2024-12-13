@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorador de Archivos</title>
+
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles.css">
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/src/index.js"> </script>
+
+</head>
+
+<body>
+  <div class="explorer">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="view-options">
+        <button id="listViewBtn"><i class="bx bx-list-ul"></i></button>
+        <button id="gridViewBtn"><i class="bx bx-grid-alt"></i></button>
+      </div>
+
+      <h2>Mis Discos</h2>
+      <ul class="drive-list" id="disk-list"> </ul>
+
+      <h2>Rutas</h2>
+      <ul class="path-list" id="path-list">
+        <li name="Downloads"><i class="bx bx-folder"></i> Descargas</li>
+        <li name="Documents"><i class="bx bx-folder"></i> Documentos</li>
+        <li name="Pictures"><i class="bx bx-folder"></i> Imágenes</li>
+        <li name="Music"><i class="bx bx-folder"></i> Musica</li>
+        <li name="Videos"><i class="bx bx-folder"></i> Videos</li>
+      </ul>
+    </aside>
+
+    <!-- Content -->
+    <section class="content">
+      <div class="current-path">
+        <!-- Breadcrumb para cada carpeta -->
+        <span class="breadcrumb" id="breadcrumb-path">
+          <a>C:/</a>
+          <a>Usuarios/</a>
+          <a>MiUsuario/</a>
+          <a>Documentos/</a>
+        </span>
+        <!-- Contador de archivos y carpetas -->
+        <span class="item-count" id="info-path"></span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress" id="progress-path"></div>
+      </div>
+      <div class="files-box view-list" id="files-box"> </div>
+    </section>
+  </div>
+</body>
+
+</html>
